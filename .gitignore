@@ -3,6 +3,8 @@
 *~
 *.swp
 
+*.vscode/
+
 # Mac Filesystem
 .DS_Store?
 

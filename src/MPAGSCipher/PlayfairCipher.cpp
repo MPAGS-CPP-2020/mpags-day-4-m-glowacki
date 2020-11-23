@@ -61,7 +61,7 @@ int col{0};
 std::cout << key_ << std::endl;
 
 for (size_t i{0}; i < key_.size() ; i ++){
-while ((col <= 5) & (row <= 5){
+while ((col <= 5) & (row <= 5)){
     if ((col != 5) & (row != 5)) {
        auto coords {std::make_pair(row, col)};
        letter2coordmap_.insert(std::make_pair(key_[i], coords));

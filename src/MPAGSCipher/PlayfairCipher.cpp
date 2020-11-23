@@ -61,8 +61,8 @@ int col{0};
 std::cout << key_ << std::endl;
 
 for (size_t i{0}; i < key_.size() ; i ++){
-while ((col <= 5) & (row <= 5)){
-    if ((col != 5) & (row != 5)) {
+while ((col < 6) & (row < 5)){
+    if (col +1 != 6) {
        auto coords {std::make_pair(row, col)};
        letter2coordmap_.insert(std::make_pair(key_[i], coords));
        coord2lettermap_.insert(std::make_pair(coords, key_[i]));
@@ -116,14 +116,8 @@ for (size_t idx{1}; idx < inputText.size(); idx ++){
  }
 
  // Loop over the input in Digraphs
-for ( auto p : letter2coordmap_ )
- {
- std::cout << p.first << std::endl; 
- std::cout << std::get<0>(p.second) << ' ';
- std::cout << std::get<1>(p.second) << '\n';
- }
 
- for(size_t idx{0}; inputText.size()+ 1; idx +=2 ){
+ for(size_t idx{0}; idx < inputText.size(); idx +=2 ){
 
     auto coords_1 = letter2coordmap_.at(inputText[idx]);
     int row_1 {std::get<0>(coords_1)};

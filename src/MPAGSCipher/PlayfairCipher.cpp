@@ -126,29 +126,62 @@ for (size_t idx{1}; idx < inputText.size(); idx ++){
     auto coords_2 = letter2coordmap_.at(inputText[idx+1]);
     int row_2 {std::get<0>(coords_2)};
     int col_2 {std::get<1>(coords_2)};
-    
-    if (row_1 == row_2){
-       col_1 = col_1 + 1;
-       col_2 = col_2 + 1;
+
+      if (row_1 == row_2) {
+
+         if ((col_1 + 1 == 5) | (col_2 + 1 == 5)) { 
+            if (col_1 + 1 == 5) {
+               row_1 ++;
+               col_1 = 0;
+               col_2 ++;
+            }
+
+            else if (col_2 + 1 == 5) {
+               row_2 ++;
+               col_2 = 0;
+               col_1 ++;
+            }
+            }
+         else{
+            col_1 ++;
+            col_2 ++;
+         }
+    }
+    if (col_1 == col_2) {
+
+         if ((row_1 + 1 == 5) | (row_2 + 1 == 5)) { 
+            if (row_1 + 1 == 5) {
+               col_1 ++;
+               row_1 = 0;
+               row_2 ++;
+            }
+
+            else if (row_2 + 1 == 5) {
+               col_2 ++;
+               row_2 = 0;
+               row_1 ++;
+            }
+            }
+         else{
+           row_1 ++;
+           row_2 ++;
+         }
     }
 
-    if (col_1 == col_2) {
-       row_1 = row_1 + 1;
-       row_2 = row_2 + 1;
-    }
+      
 
     if ((row_1 != row_2) & (col_1 != col_2)){
       std::swap(row_1, row_2);
       std::swap(col_1, col_2);
+  
     }
 
     std::tuple<int, int> coords2letter_1 {row_1, col_1};
     std::tuple<int, int> coords2letter_2 {row_2, col_2};
     char letter_1 {coord2lettermap_.at(coords2letter_1)};
     char letter_2 {coord2lettermap_.at(coords2letter_2)};
-   
-    inputText[idx] = letter_1;
-    inputText[(idx+1)] = letter_2;
+    inputText[idx] = letter_2;
+    inputText[(idx+1)] = letter_1;
    
  }
  
